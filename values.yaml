@@ -4,6 +4,16 @@
 
 replicaCount: 1
 
+dispatcher:
+  data:
+    reduced:
+      ddcache: "/net/cdcicn02/scratch/shared/savchenk/data/reduced/ddcache"
+
+dda:
+  data:
+    reduced:
+      ddcache: "/net/cdcicn02/scratch/shared/savchenk/data/reduced/ddcache"
+    resources: "/net/cdcicn02/scratch/shared/savchenk/data/resources"
 
 podAnnotations: {}
 
