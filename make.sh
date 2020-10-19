@@ -8,14 +8,9 @@ function create-secrets(){
     kubectl create secret generic logstash-entrypoint  --from-file=./private/logstash-entrypoint.txt
 }
 
-function install() {
-    set -x
-    helm -n ${NAMESPACE:?} install oda . 
-}
-
 function upgrade() {
     set -x
-    helm upgrade -n ${NAMESPACE:?} oda . \
+    helm upgrade --install -n ${NAMESPACE:?} oda . \
         --set dqueue.image.tag="$(cd charts/dqueue-chart/dqueue; git describe --always)" \
         --set dda.image.tag="$(cd charts/dda-chart/dda; git describe --always)" \
         --set magic.image.tag="$(cd charts/magic-chart/magic-container; git describe --always)" \
