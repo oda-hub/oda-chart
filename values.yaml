@@ -2,16 +2,19 @@ replicaCount: 1
 
 dispatcher:
   oda:
-    # scratch for
+    # hostdir scratch for worker
     scratch_root: "...."
+    # storage for deployment-wide cache of precomputed products 
     ddcache: "...."
 
 dda:
   oda:
+    # hostdir scratch for worker
     scratch_root: "...."
+    # same as dispatcher.oda.ddcache
     ddcache: "...."
+    # used for some workflows, can be set to empty directory
     resources: "...."
-    hub: odahub
 
 
 podAnnotations: {}
