@@ -10,7 +10,7 @@ function create-secrets(){
 
 function upgrade-dev() {
     set -x
-    helm upgrade --install -n ${NAMESPACE:?} oda . \
+    helm upgrade -i -n ${NAMESPACE:?} oda . \
         --set dqueue.image.tag="$(cd charts/dqueue-chart/dqueue; git describe --always)" \
         --set dda.image.tag="$(cd charts/dda-chart/dda; git describe --always)" \
         --set magic.image.tag="$(cd charts/magic-chart/magic-container; git describe --always)" \
