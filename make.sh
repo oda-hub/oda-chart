@@ -1,3 +1,4 @@
+export NAMESPACE=${NAMESPACE:-staging-1-3}
 
 function create-secrets(){
     kubectl create secret generic db-user-pass  --from-file=./private/password.txt
