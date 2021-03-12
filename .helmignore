@@ -1,5 +1,4 @@
 charts/magic-chart
-charts/dispatcher-chart
 charts/mysql-chart
 charts/dqueue-chart
 charts/frontend-chart
