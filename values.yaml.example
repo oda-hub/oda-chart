@@ -1,6 +1,11 @@
 replicaCount: 1
 replicaCountPassive: 1
 
+dda:
+  oda:
+    # only useful in places where data archive and large spaces are available
+    use_hostpath: false 
+
 #dispatcher:
 #  oda:
     # hostdir scratch for worker
@@ -42,3 +47,6 @@ mysql:
   persistence:
 # to set: your storage class
     storageClass: cdcicn-nfs
+
+dda:
+  storage_class: cdcicn-nfs

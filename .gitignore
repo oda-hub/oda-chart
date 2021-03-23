@@ -1,3 +1,4 @@
-charts
 extras
 *.gpg
+charts
+values-*.yaml
