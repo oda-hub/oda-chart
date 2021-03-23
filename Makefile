@@ -12,6 +12,9 @@ create-secrets: $(SUBCHARTS)
 recreate-dev:
 	bash make.sh recreate-dev
 
+test:
+	bash make.sh $(MAKECMDGOALS)
+
 $(SUBCHARTS):
 	$(MAKE) -C $@ $(MAKECMDGOALS)
 

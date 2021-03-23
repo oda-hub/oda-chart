@@ -3,4 +3,10 @@ charts/mysql-chart
 charts/dqueue-chart
 charts/frontend-chart
 charts/data-chart
+
 extras
+
+charts/dda-chart/templates/tests
+charts/frontend-chart/templates/tests
+
+*.swp
