@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: "{{ .Release.Name }}-credentials-test"
+  annotations:
+    "helm.sh/hook": test-success
+spec:
+  containers:
+  - name: {{ .Release.Name }}-simple-test
+    image: centos
+    command: ["sh", "-c", "curl oda-dispatcher/run_analysis"]
+  restartPolicy: Never
+
