@@ -17,9 +17,9 @@ spec:
       n_instruments=$(curl http://oda-dispatcher:8000/run_analysis | jq .installed_instruments\ \|\ length)
       [ $n_instruments -gt 5 ]
 
-      curl http://oda-dispatcher:8000/run_analysis\?instrument=isgri\&query_type=dummy\&product_type=isgri_image\&query_status=new
+      curl http://oda-dispatcher:8000/run_analysis\?instrument=spi_acs\&query_type=dummy\&product_type=spi_acs_lc\&query_status=new
 
-      oda-api -u http://oda-dispatcher:8080 get -i spi_acs -p spi_acs_lc
+      oda-api -u http://oda-dispatcher:8000 get -i spi_acs -p spi_acs_lc -a T1=2011-01-01T11:11:11 -a T2=2011-01-01T11:11:21
 
 
   restartPolicy: Never

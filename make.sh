@@ -45,6 +45,7 @@ function recreate-dev() {
 }
 
 function test() {
+    upgrade-dev # or not dev!
     helm test oda -n $ODA_NAMESPACE --logs --debug
 }
 
