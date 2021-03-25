@@ -45,8 +45,24 @@ affinity: {}
 
 mysql:
   persistence:
-# to set: your storage class
-    storageClass: cdcicn-nfs
+    storageClass: vspherecsi
 
 dda:
-  storage_class: cdcicn-nfs
+  ddosa_scwdata_download: false
+
+  dda_disable_async: true
+  dda_bootstrap_data: false
+
+  use_hostpath: false
+
+  storage_class: vspherecsi
+  storage_class_rwmany: nfs-client
+
+dispatcher:
+  async_dispatcher: false
+
+  use_hostpath: false
+
+  storageClass: vspherecsi
+  storage_class_rwmany: nfs-client
+
