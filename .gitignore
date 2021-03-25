@@ -1,3 +1,7 @@
-charts
 extras
 *.gpg
+values-*.yaml
+charts/dqueue-chart
+charts/frontend-chart
+charts/magic-chart
+charts/mysql-chart

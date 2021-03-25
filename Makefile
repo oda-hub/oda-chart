@@ -9,6 +9,12 @@ deploy:
 create-secrets: $(SUBCHARTS)
 	bash make.sh create-secrets
 
+recreate-dev:
+	bash make.sh recreate-dev
+
+test:
+	bash make.sh $(MAKECMDGOALS)
+
 $(SUBCHARTS):
 	$(MAKE) -C $@ $(MAKECMDGOALS)
 
