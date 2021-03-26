@@ -1,17 +1,26 @@
-export NAMESPACE=${NAMESPACE:-staging-1-3}
+echo -e "\033[32musing ODA_NAMESPACE=${ODA_NAMESPACE:=oda-staging}\033[0m"
+echo -e "\033[32musing ODA_SITE=${ODA_SITE:-}\033[0m"
+
+function site-values() {
+    if [ "${ODA_SITE}" == "" ]; then
+        echo values.yaml
+    else
+        echo values-${ODA_SITE}.yaml
+    fi
+}
 
 function create-secrets(){
-    kubectl create secret generic db-user-pass  --from-file=./private/password.txt
-    kubectl create secret generic odatests-tests-bot-password  --from-file=./private/testbot-password.txt
-    kubectl create secret generic odatests-secret-key  --from-file=./private/secret-key.txt
-    kubectl create secret generic minio-key  --from-file=./private/minio-key.txt
-    kubectl create secret generic jena-password  --from-file=./private/jena-password.txt
-    kubectl create secret generic logstash-entrypoint  --from-file=./private/logstash-entrypoint.txt
+    echo
+#    kubectl create secret generic db-user-pass  --from-file=./private/password.txt
+#    kubectl create secret generic minio-key  --from-file=./private/minio-key.txt
+#    kubectl create secret generic jena-password  --from-file=./private/jena-password.txt
+#    kubectl create secret generic logstash-entrypoint  --from-file=./private/logstash-entrypoint.txt
 }
 
 function upgrade-dev() {
     set -x
     helm upgrade -i -n ${NAMESPACE:?} oda . \
+        -f $(site-values) \
         --set dqueue.image.tag="$(cd charts/dqueue-chart/dqueue; git describe --always)" \
         --set dda.image.tag="$(cd charts/dda-chart/dda; git describe --always)" \
         --set magic.image.tag="$(cd charts/magic-chart/magic-container; git describe --always)" \
@@ -25,6 +34,19 @@ function upgrade-dev() {
 function upgrade() {
     set -x
     helm upgrade --install  oda . 
+}
+
+function recreate-dev() {
+    kubectl delete namespace $ODA_NAMESPACE
+    kubectl create namespace $ODA_NAMESPACE
+
+    make create-secrets
+    upgrade-dev
+}
+
+function test() {
+    upgrade-dev # or not dev!
+    helm test oda -n $ODA_NAMESPACE --logs --debug
 }
 
 
