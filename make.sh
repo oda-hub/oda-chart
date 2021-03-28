@@ -1,4 +1,4 @@
-echo -e "\033[32musing ODA_NAMESPACE=${ODA_NAMESPACE:=staging-1-3}\033[0m"
+echo -e "\033[32musing ODA_NAMESPACE=${ODA_NAMESPACE:=oda-staging}\033[0m"
 echo -e "\033[32musing ODA_SITE=${ODA_SITE:-}\033[0m"
 
 function create-namespace() {
