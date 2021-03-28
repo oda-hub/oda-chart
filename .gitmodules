@@ -1,6 +1,6 @@
 [submodule "charts/dispatcher-chart"]
 	path = charts/dispatcher-chart
-	url = git@github.com:dsavchenko/dispatcher-chart.git
+	url = git@github.com:oda-hub/dispatcher-chart.git
 [submodule "charts/dda-chart"]
 	path = charts/dda-chart
-	url = git@github.com:dsavchenko/dda-chart.git
+	url = git@github.com:oda-hub/dda-chart.git
