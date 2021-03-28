@@ -1,5 +1,14 @@
-echo -e "\033[32musing ODA_NAMESPACE=${ODA_NAMESPACE:=oda-staging}\033[0m"
+echo -e "\033[32musing ODA_NAMESPACE=${ODA_NAMESPACE:=staging-1-3}\033[0m"
 echo -e "\033[32musing ODA_SITE=${ODA_SITE:-}\033[0m"
+
+function create-namespace() {
+    if kubectl get namespace ${ODA_NAMESPACE} >/dev/null 2>&1; then
+        echo 'namespace is present'
+    else
+        kubectl create namespace ${ODA_NAMESPACE}
+    fi
+}
+
 
 function site-values() {
     if [ "${ODA_SITE}" == "" ]; then
@@ -19,7 +28,7 @@ function create-secrets(){
 
 function upgrade-dev() {
     set -x
-    helm upgrade -i -n ${NAMESPACE:?} oda . \
+    helm upgrade -i -n ${ODA_NAMESPACE:?} oda . \
         -f $(site-values) \
         --set dqueue.image.tag="$(cd charts/dqueue-chart/dqueue; git describe --always)" \
         --set dda.image.tag="$(cd charts/dda-chart/dda; git describe --always)" \

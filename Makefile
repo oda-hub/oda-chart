@@ -1,12 +1,15 @@
 SUBCHARTS := $(wildcard charts/*)
 
+create-namespace:
+	bash make.sh create-namespace
+
 dev:
 	bash make.sh upgrade-dev
 
 deploy:
 	bash make.sh upgrade
 
-create-secrets: $(SUBCHARTS)
+create-secrets: create-namespace $(SUBCHARTS)
 	bash make.sh create-secrets
 
 recreate-dev:
