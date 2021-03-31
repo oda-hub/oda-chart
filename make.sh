@@ -11,6 +11,7 @@ function site-values() {
 
 function create-secrets(){
     echo
+# TODO: adapt for current version
 #    kubectl create secret generic db-user-pass  --from-file=./private/password.txt
 #    kubectl create secret generic minio-key  --from-file=./private/minio-key.txt
 #    kubectl create secret generic jena-password  --from-file=./private/jena-password.txt
@@ -19,7 +20,7 @@ function create-secrets(){
 
 function upgrade-dev() {
     set -x
-    helm upgrade -i -n ${NAMESPACE:?} oda . \
+    helm upgrade -i -n ${ODA_NAMESPACE:?} oda . \
         -f $(site-values) \
         --set dqueue.image.tag="$(cd charts/dqueue-chart/dqueue; git describe --always)" \
         --set dda.image.tag="$(cd charts/dda-chart/dda; git describe --always)" \

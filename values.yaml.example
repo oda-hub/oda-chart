@@ -1,27 +1,6 @@
 replicaCount: 1
 replicaCountPassive: 1
 
-dda:
-  oda:
-    # only useful in places where data archive and large spaces are available
-    use_hostpath: false 
-
-#dispatcher:
-#  oda:
-    # hostdir scratch for worker
-    #    scratch_root: "...."
-    # storage for deployment-wide cache of precomputed products 
-    #ddcache: "...."
-
-    #dda:
-    #oda:
-    # hostdir scratch for worker
-    #scratch_root: "...."
-    # same as dispatcher.oda.ddcache
-    #ddcache: "...."
-    # used for some workflows, can be set to empty directory
-    #resources: "...."
-
 
 podAnnotations: {}
 
@@ -64,5 +43,6 @@ dispatcher:
   use_hostpath: false
 
   storageClass: vspherecsi
+  #storage_class_rwmany: nfs
   storage_class_rwmany: nfs-client
 
