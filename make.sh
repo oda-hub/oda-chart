@@ -42,7 +42,7 @@ function upgrade-dev() {
 
 function upgrade() {
     set -x
-    helm upgrade --install  oda . 
+    helm upgrade --install  oda . -f $(site-values)
 }
 
 function recreate-dev() {
