@@ -2,10 +2,11 @@
 
 * A kubernetes cluster, API > v1.23
   * CSI with ReadWriteMany persistent volumes
+  * Ingress controler and certificate manager
 
-### Base platform: frontend and dispatcher + Contributed notebook backends
+### Typical minimal base platform: frontend and dispatcher + Contributed notebook backends
 
-* 20 CPU, 50 Gb RAM, 200Gb persistent storage for container images
+* 50 CPU, 100 Gb RAM, 200Gb persistent storage for container images
 
 ### HPC cluster link 
 
